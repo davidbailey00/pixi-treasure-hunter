@@ -44,12 +44,16 @@ module.exports = function play(delta, states, vars) {
 
   if (explorerHit) {
     explorer.alpha = 0.5;
-    healthBar.outer.width -= 3;
+    healthBar.outer.width -= 3 * delta;
   } else {
     explorer.alpha = 1;
   }
 
   if (hitTestRectangle(explorer, treasure)) {
+    treasure.captured = true;
+  }
+
+  if (treasure.captured) {
     treasure.x = explorer.x + 8;
     treasure.y = explorer.y + 8;
   }

@@ -10,6 +10,7 @@ module.exports = function end(delta, states, vars) {
 
     gameScene.visible = true;
     gameOverScene.visible = false;
+    treasure.captured = false;
 
     healthBar.outer.width = 128;
 
