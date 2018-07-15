@@ -14,5 +14,5 @@ module.exports = function createGameScene(vars) {
   [door.x, door.y] = [32, 0];
   gameParticles.addChild(door);
 
-  return { gameScene, gameParticles, dungeon, door };
+  Object.assign(vars, { gameScene, gameParticles, dungeon, door });
 };

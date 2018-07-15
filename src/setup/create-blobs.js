@@ -20,5 +20,5 @@ module.exports = function createBlobs(vars) {
     gameParticles.addChild(blob);
   }
 
-  return { blobs };
+  Object.assign(vars, { blobs });
 };

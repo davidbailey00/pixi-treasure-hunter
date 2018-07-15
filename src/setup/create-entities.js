@@ -12,5 +12,5 @@ module.exports = function createEntities(vars) {
   treasure.y = gameParticles.height / 2 - treasure.height / 2;
   gameParticles.addChild(treasure);
 
-  return { explorer, treasure };
+  Object.assign(vars, { explorer, treasure });
 };

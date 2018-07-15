@@ -49,12 +49,12 @@ function setup() {
     randomInt, keys, contain, hitTestRectangle, id
   };
 
-  Object.assign(vars, createGameScene(vars));
-  Object.assign(vars, createEntities(vars));
-  Object.assign(vars, createBlobs(vars));
+  createGameScene(vars);
+  createEntities(vars);
+  createBlobs(vars);
 
-  Object.assign(vars, createHealthBar(vars));
-  Object.assign(vars, createGameOverScene(vars));
+  createHealthBar(vars);
+  createGameOverScene(vars);
 
   const states = { play, end };
   let state = play;

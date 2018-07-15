@@ -33,5 +33,5 @@ module.exports = function createGameOverScene(vars) {
 
   playAgainButton.on('pointerup', () => playAgainButton.hasBeenClicked = true);
 
-  return { gameOverScene, message, playAgainButton };
+  Object.assign(vars, { gameOverScene, message, playAgainButton });
 };

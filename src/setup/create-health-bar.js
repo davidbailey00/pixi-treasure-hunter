@@ -18,5 +18,5 @@ module.exports = function createHealthBar(vars) {
   healthBar.addChild(outerBar);
   healthBar.outer = outerBar;
 
-  return { healthBar };
+  Object.assign(vars, { healthBar });
 };
