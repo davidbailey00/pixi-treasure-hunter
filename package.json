@@ -1,0 +1,27 @@
+{
+  "name": "treasure-hunter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "dependencies": {
+    "pixi.js": "^4.8.1",
+    "random-int": "^1.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "watchify": "^3.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidbailey00/pixi-treasure-hunter.git"
+  },
+  "author": "David Bailey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidbailey00/pixi-treasure-hunter/issues"
+  },
+  "homepage": "https://github.com/davidbailey00/pixi-treasure-hunter#readme"
+}
