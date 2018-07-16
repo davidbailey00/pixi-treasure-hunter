@@ -1,4 +1,7 @@
 const PIXI = require('pixi.js');
+const Application = PIXI.Application;
+const loader = PIXI.loader;
+const resources = PIXI.loader.resources;
 
 const setupKeyboardEvents = require('./setup/setup-keyboard-events');
 const createGameScene = require('./setup/create-game-scene');
@@ -11,7 +14,7 @@ const startGame = require('./setup/start-game');
 
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
-const app = new PIXI.Application({
+const app = new Application({
   width: 512,
   height: 512,
   antialias: true,
@@ -22,12 +25,12 @@ const app = new PIXI.Application({
 
 document.body.appendChild(app.view);
 
-PIXI.loader
+loader
   .add('images/treasure-hunter.json')
   .load(setup);
 
 function setup() {
-  const tex = PIXI.loader.resources['images/treasure-hunter.json'].textures;
+  const tex = resources['images/treasure-hunter.json'].textures;
   const game = { app, tex };
 
   setupKeyboardEvents(game);
