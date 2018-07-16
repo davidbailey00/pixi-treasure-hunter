@@ -28,8 +28,8 @@ loader
   .load(setup);
 
 function setup() {
-  const id = resources['images/treasure-hunter.json'].textures;
-  const game = { app, id };
+  const tex = resources['images/treasure-hunter.json'].textures;
+  const game = { app, tex };
 
   setupKeyboardEvents(game);
 

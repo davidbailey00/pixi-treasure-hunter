@@ -4,7 +4,7 @@ const ParticleContainer = PIXI.particles.ParticleContainer;
 const Sprite = PIXI.Sprite;
 
 module.exports = function createGameScene(game) {
-  const { app, id } = game;
+  const { app, tex } = game;
 
   const gameScene = new Container(512);
   app.stage.addChild(gameScene);
@@ -12,10 +12,10 @@ module.exports = function createGameScene(game) {
   const gameParticles = new ParticleContainer(512, { tint: true });
   gameScene.addChild(gameParticles);
 
-  const dungeon = new Sprite(id['dungeon.png']);
+  const dungeon = new Sprite(tex['dungeon.png']);
   gameParticles.addChild(dungeon);
 
-  const door = new Sprite(id['door.png']);
+  const door = new Sprite(tex['door.png']);
   [door.x, door.y] = [32, 0];
   gameParticles.addChild(door);
 

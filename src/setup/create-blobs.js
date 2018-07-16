@@ -4,7 +4,7 @@ const Sprite = PIXI.Sprite;
 const randomInt = require('random-int');
 
 module.exports = function createBlobs(game) {
-  const { id, gameParticles } = game;
+  const { tex, gameParticles } = game;
 
   const blobs = [];
   const numberOfBlobs = 6,
@@ -14,7 +14,7 @@ module.exports = function createBlobs(game) {
   let direction = 1;
 
   for (let i = 0; i < numberOfBlobs; i += 1) {
-    const blob = new Sprite(id['blob.png']);
+    const blob = new Sprite(tex['blob.png']);
     blob.x = spacing * i + xOffset;
     blob.y = randomInt(gameParticles.height - blob.height);
 
