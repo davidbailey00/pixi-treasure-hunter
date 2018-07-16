@@ -15,8 +15,10 @@
     "browserify": "^16.2.2",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^3.0.0",
     "run-sequence": "^2.2.1",
-    "tinyify": "^2.4.3",
+    "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.11.0"
   },
   "scripts": {

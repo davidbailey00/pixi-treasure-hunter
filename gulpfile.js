@@ -1,23 +1,31 @@
 const gulp = require('gulp');
 
-const fs = require('fs');
-const del = require('del');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const streamify = require('gulp-streamify');
+const uglify = require('gulp-uglify');
 
 const browserSync = require('browser-sync');
-const browserify = require('browserify');
+const del = require('del');
 const runSequence = require('run-sequence');
 
 function bundle(dev) {
-  let opts = { plugin: ['tinyify'] };
+  let opts = {};
 
   if (dev) {
     opts = { cache: {}, packageCache: {}, plugin: ['watchify'], debug: true };
   }
 
-  browserify('src/main.js', opts)
+  const stream = browserify('src/main.js', opts)
     .transform('babelify', { presets: ['@babel/preset-env'] })
     .bundle()
-    .pipe(fs.createWriteStream('dist/bundle.js'));
+    .pipe(source('bundle.js'));
+
+  if (!dev) {
+    stream.pipe(streamify(uglify()));
+  }
+
+  stream.pipe(gulp.dest('dist'));
 }
 
 gulp.task('js-dev', () => bundle(true));
