@@ -8,7 +8,15 @@
     "random-int": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.53",
+    "@babel/preset-env": "^7.0.0-beta.53",
+    "babelify": "^9.0.0",
+    "browser-sync": "^2.24.5",
     "browserify": "^16.2.2",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "run-sequence": "^2.2.1",
+    "tinyify": "^2.4.3",
     "watchify": "^3.11.0"
   },
   "scripts": {
