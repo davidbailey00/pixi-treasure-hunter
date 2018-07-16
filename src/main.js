@@ -12,6 +12,8 @@ const createGameOverScene = require('./setup/create-game-over-scene');
 const startGame = require('./setup/start-game');
 
 
+PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
+
 const app = new Application({
   width: 512,
   height: 512,
