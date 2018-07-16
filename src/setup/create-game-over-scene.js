@@ -18,8 +18,9 @@ module.exports = function createGameOverScene(game) {
   });
 
   const message = new Text('The End!', style);
-  message.x = 120;
-  message.y = app.stage.height / 2 - 32;
+  message.anchor.x = 0.5;
+  message.x = app.stage.width / 2;
+  message.y = app.stage.height / 2 - 64;
   gameOverScene.addChild(message);
 
   const playAgainStyle = new TextStyle({
@@ -29,8 +30,9 @@ module.exports = function createGameOverScene(game) {
   });
 
   const playAgainButton = new Text('Click here to play again', playAgainStyle);
-  playAgainButton.x = 120;
-  playAgainButton.y = app.stage.height / 2 + 64;
+  playAgainButton.anchor.x = 0.5;
+  playAgainButton.x = app.stage.width / 2;
+  playAgainButton.y = app.stage.height / 2 + 32;
   gameOverScene.addChild(playAgainButton);
 
   playAgainButton.interactive = true;
