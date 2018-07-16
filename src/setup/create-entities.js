@@ -1,5 +1,8 @@
-module.exports = function createEntities(vars) {
-  const { Sprite, id, gameParticles } = vars;
+const PIXI = require('pixi.js');
+const Sprite = PIXI.Sprite;
+
+module.exports = function createEntities(game) {
+  const { id, gameParticles } = game;
 
   const explorer = new Sprite(id['explorer.png']);
   explorer.x = 68;
@@ -12,5 +15,5 @@ module.exports = function createEntities(vars) {
   treasure.y = gameParticles.height / 2 - treasure.height / 2;
   gameParticles.addChild(treasure);
 
-  Object.assign(vars, { explorer, treasure });
+  Object.assign(game, { explorer, treasure });
 };

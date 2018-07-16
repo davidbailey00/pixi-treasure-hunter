@@ -1,5 +1,9 @@
-module.exports = function createHealthBar(vars) {
-  const { app, Container, Graphics, gameScene } = vars;
+const PIXI = require('pixi.js');
+const Container = PIXI.Container;
+const Graphics = PIXI.Graphics;
+
+module.exports = function createHealthBar(game) {
+  const { app, gameScene } = game;
 
   const healthBar = new Container();
   [healthBar.x, healthBar.y] = [app.stage.width - 170, 4];
@@ -18,5 +22,5 @@ module.exports = function createHealthBar(vars) {
   healthBar.addChild(outerBar);
   healthBar.outer = outerBar;
 
-  Object.assign(vars, { healthBar });
+  Object.assign(game, { healthBar });
 };

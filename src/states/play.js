@@ -1,9 +1,8 @@
-module.exports = function play(delta, states, vars) {
-  const { play, end } = states;
-  const {
-    keys, contain, hitTestRectangle, explorer,
-    blobs, healthBar, treasure, message, door
-  } = vars;
+const contain = require('../helper/contain');
+const hitTestRectangle = require('../helper/hit-test-rectangle');
+
+module.exports = function play(game, delta) {
+  const { keys, explorer, blobs, healthBar, treasure, message, door } = game;
 
   [explorer.vx, explorer.vy] = [0, 0];
   if (keys.left.isDown) {
@@ -60,13 +59,13 @@ module.exports = function play(delta, states, vars) {
 
   if (healthBar.outer.width <= 0) {
     message.text = 'You lost!';
-    return end;
+    return 'end';
   }
 
   if (hitTestRectangle(treasure, door)) {
     message.text = 'You won!';
-    return end;
+    return 'end';
   }
 
-  return play;
+  return 'play';
 };

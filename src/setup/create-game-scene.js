@@ -1,5 +1,10 @@
-module.exports = function createGameScene(vars) {
-  const { app, Container, ParticleContainer, Sprite, id } = vars;
+const PIXI = require('pixi.js');
+const Container = PIXI.Container;
+const ParticleContainer = PIXI.particles.ParticleContainer;
+const Sprite = PIXI.Sprite;
+
+module.exports = function createGameScene(game) {
+  const { app, id } = game;
 
   const gameScene = new Container(512);
   app.stage.addChild(gameScene);
@@ -14,5 +19,5 @@ module.exports = function createGameScene(vars) {
   [door.x, door.y] = [32, 0];
   gameParticles.addChild(door);
 
-  Object.assign(vars, { gameScene, gameParticles, dungeon, door });
+  Object.assign(game, { gameScene, gameParticles, dungeon, door });
 };

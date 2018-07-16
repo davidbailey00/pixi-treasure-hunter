@@ -1,5 +1,10 @@
-module.exports = function createGameOverScene(vars) {
-  const { app, Container, TextStyle, Text } = vars;
+const PIXI = require('pixi.js');
+const Container = PIXI.Container;
+const TextStyle = PIXI.TextStyle;
+const Text = PIXI.Text;
+
+module.exports = function createGameOverScene(game) {
+  const { app } = game;
 
   const gameOverScene = new Container();
   app.stage.addChild(gameOverScene);
@@ -33,5 +38,5 @@ module.exports = function createGameOverScene(vars) {
 
   playAgainButton.on('pointerup', () => playAgainButton.hasBeenClicked = true);
 
-  Object.assign(vars, { gameOverScene, message, playAgainButton });
+  Object.assign(game, { gameOverScene, message, playAgainButton });
 };

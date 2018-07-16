@@ -1,6 +1,5 @@
-module.exports = function end(delta, states, vars) {
-  const { gameScene, gameOverScene, healthBar, playAgainButton, explorer, treasure } = vars;
-  const { play, end } = states;
+module.exports = function end(game) {
+  const { gameScene, gameOverScene, healthBar, playAgainButton, explorer, treasure } = game;
 
   gameScene.visible = false;
   gameOverScene.visible = true;
@@ -19,8 +18,8 @@ module.exports = function end(delta, states, vars) {
     treasure.x = gameScene.width - treasure.width - 48;
     treasure.y = gameScene.height / 2 - treasure.height / 2;
 
-    return play;
+    return 'play';
   }
 
-  return end;
+  return 'end';
 };

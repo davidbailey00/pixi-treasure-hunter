@@ -1,5 +1,10 @@
-module.exports = function createBlobs(vars) {
-  const { Sprite, id, randomInt, gameParticles } = vars;
+const PIXI = require('pixi.js');
+const Sprite = PIXI.Sprite;
+
+const randomInt = require('random-int');
+
+module.exports = function createBlobs(game) {
+  const { id, gameParticles } = game;
 
   const blobs = [];
   const numberOfBlobs = 6,
@@ -20,5 +25,5 @@ module.exports = function createBlobs(vars) {
     gameParticles.addChild(blob);
   }
 
-  Object.assign(vars, { blobs });
+  Object.assign(game, { blobs });
 };
