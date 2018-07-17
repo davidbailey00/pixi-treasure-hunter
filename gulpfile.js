@@ -4,10 +4,16 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const streamify = require('gulp-streamify');
 const uglify = require('gulp-uglify');
+const fs = require('fs');
+const packer = require('gamefroot-texture-packer');
+const htmlmin = require('gulp-htmlmin');
 
 const browserSync = require('browser-sync');
 const del = require('del');
 const runSequence = require('run-sequence');
+
+
+// === Build Tasks ===
 
 function bundle(bundler, dev) {
   const stream = bundler
@@ -39,12 +45,36 @@ gulp.task('js', () => {
   bundle(bundler);
 });
 
-gulp.task('serve', ['js-dev'], () => {
+// Requires ImageMagick with legacy tools
+gulp.task('sprites', () => {
+  fs.mkdirSync('dist');
+  packer('src/images/*.png', {
+    format: 'json',
+    path: 'dist/images',
+    name: 'textures',
+    padding: 2
+  });
+});
+
+gulp.task('html', () => {
+  gulp.src('src/index.html')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest('dist'));
+});
+
+
+// === Dev/Build Sequence Tools ===
+
+gulp.task('serve', ['js-dev', 'sprites', 'html'], () => {
   browserSync.init({
     server: './dist'
   });
+
+  // js-dev automatically watches using watchify
+  gulp.watch('src/images/*', ['sprites']);
+  gulp.watch('src/index.html', ['html']);
   gulp.watch('dist/**/*').on('change', browserSync.reload);
 });
 
-gulp.task('clean', () => del.sync('dist/bundle.js'));
-gulp.task('build', () => runSequence('clean', 'js'));
+gulp.task('clean', () => del.sync('dist'));
+gulp.task('build', () => runSequence('clean', ['js', 'sprites', 'html']));

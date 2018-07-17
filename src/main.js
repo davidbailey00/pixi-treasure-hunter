@@ -26,11 +26,11 @@ const app = new Application({
 document.body.appendChild(app.view);
 
 loader
-  .add('images/treasure-hunter.json')
+  .add('images/textures-1.json')
   .load(setup);
 
 function setup() {
-  const tex = resources['images/treasure-hunter.json'].textures;
+  const tex = resources['images/textures-1.json'].textures;
   const game = { app, tex };
 
   setupKeyboardEvents(game);
