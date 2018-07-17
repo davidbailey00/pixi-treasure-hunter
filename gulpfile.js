@@ -9,14 +9,8 @@ const browserSync = require('browser-sync');
 const del = require('del');
 const runSequence = require('run-sequence');
 
-function bundle(dev) {
-  let opts = {};
-
-  if (dev) {
-    opts = { cache: {}, packageCache: {}, plugin: ['watchify'], debug: true };
-  }
-
-  const stream = browserify('src/main.js', opts)
+function bundle(bundler, dev) {
+  const stream = bundler
     .transform('babelify', { presets: ['@babel/preset-env'] })
     .bundle()
     .pipe(source('bundle.js'));
@@ -28,15 +22,27 @@ function bundle(dev) {
   stream.pipe(gulp.dest('dist'));
 }
 
-gulp.task('js-dev', () => bundle(true));
-gulp.task('js', () => bundle());
+gulp.task('js-dev', () => {
+  const bundler = browserify('src/main.js', {
+    cache: {},
+    packageCache: {},
+    plugin: ['watchify'],
+    debug: true
+  });
+
+  bundler.on('update', () => bundle(bundler, true));
+  bundle(bundler);
+});
+
+gulp.task('js', () => {
+  const bundler = browserify('src/main.js');
+  bundle(bundler);
+});
 
 gulp.task('serve', ['js-dev'], () => {
   browserSync.init({
     server: './dist'
   });
-
-  gulp.watch('src/**/*.js', ['js-dev']);
   gulp.watch('dist/**/*').on('change', browserSync.reload);
 });
 
