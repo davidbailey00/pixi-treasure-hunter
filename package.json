@@ -8,13 +8,13 @@
     "random-int": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.53",
-    "@babel/preset-env": "^7.0.0-beta.53",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
     "babelify": "^9.0.0",
     "browser-sync": "^2.24.5",
     "browserify": "^16.2.2",
     "del": "^3.0.0",
-    "gamefroot-texture-packer": "^1.0.1",
+    "gamefroot-texture-packer": "Gamefroot/Gamefroot-Texture-Packer#f3687111af",
     "gulp": "^3.9.1",
     "gulp-htmlmin": "^4.0.0",
     "gulp-streamify": "^1.0.2",
